@@ -38,7 +38,7 @@
         left: 20px; top: 20px;
         width: calc(100% - 40px); height: calc(100% - 40px);
         box-sizing: border-box;
-        border: dashed 1px $theme-light-brown;
+        border: dashed 2px $theme-light-brown;
       }
 
       div {
@@ -67,6 +67,43 @@
         &::before { bottom: 0; }
         &::after  { right: 0; }
       }
+    }
+  }
+
+  /*** progress bar ***/
+  .load-view__progress-bar {
+    position: absolute;
+    top: calc(50% - 65px); left: calc(50% - 150px);
+    width: 300px; height: 130px;
+
+    .icon {
+      display: block;
+      margin: 0 auto;
+      width: 120px;
+    }
+
+    .progress-bar {
+      width: 240px; height: 3px;
+      margin: 0 auto;
+      margin-top: 20px;
+      background-color: #eee;
+      overflow: hidden;
+
+      div {
+        width: 100%; height: 100%;
+        background-color: $theme-brown;
+        transform: translateX(-100%);
+      }
+    }
+  }
+
+  /************************************************************************************************
+   * animation
+   ************************************************************************************************/
+  .load-view {
+    .load-view__progress-bar {
+      .icon { animation: load-view__jump 0.9s ease-in-out 0s infinite; }
+      .progress-bar div { animation: slide-right 1.8s ease-in 0s forwards; }
     }
   }
 }

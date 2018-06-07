@@ -1,0 +1,6 @@
+@keyframes load-view__jump {
+  0%   { transform: scale(0.9); }
+  30%  { transform: scale(1.05); }
+  60%  { transform: scale(0.9); }
+  100% { transform: scale(0.9); }
+}
