@@ -128,6 +128,68 @@
     }
   }
 
+  /*** words ***/
+  .load-view__words {
+    position: absolute;
+    top: calc(50% - 55px); left: calc(50% - 270px);
+    width: 540px; height: 110px;
+    
+    .word {
+      position: relative;
+      float: left;
+      width: 100px; height: 100px;
+      margin-right: 10px;
+      box-shadow: 0 0 0px rgba(0,0,0,0.2);
+
+      &::before,
+      &::after  { content: ""; display: block; position: absolute; }
+      &::before { left: 0; width: 100%; height: 500%; opacity: 0; }
+      &::after {
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background-size: auto 60%;
+        background-position: center;
+        background-repeat: no-repeat;
+        transform: scale(0);
+      }
+    }
+    .word:nth-child(2n) { margin-top: 10px; }
+    .word:last-child    { margin-right: 0px; }
+
+    .word:nth-child(1) {
+      &::before { bottom: 100px; background-color: $theme-light-pink; }
+      &::after  { background-image: url(../images/load-view/words/1.svg); }
+    }
+    .word:nth-child(2) {
+      &::before { top: 100px; background-color: $theme-light-orange; }
+      &::after  { background-image: url(../images/load-view/words/2.svg); }
+    }
+    .word:nth-child(3) {
+      &::before { bottom: 100px; background-color: $theme-light-yellow; }
+      &::after  { background-image: url(../images/load-view/words/3.svg); }
+    }
+    .word:nth-child(4) {
+      &::before { top: 100px; background-color: $theme-light-pink; }
+      &::after  { background-image: url(../images/load-view/words/4.svg); }
+    }
+    .word:nth-child(5) {
+      &::before { bottom: 100px; background-color: $theme-light-orange; }
+      &::after  { background-image: url(../images/load-view/words/5.svg); }
+    }
+
+    &::after { content: ""; display: block; clear: both; }
+  }
+
+  /*** content name ***/
+  .content-name {
+    position: absolute;
+    top: calc(50% + 70px); left: calc(50% - 250px);
+    width: 520px;
+    display: block;
+    opacity: 0;
+  }
+
+
   /************************************************************************************************
    * animation
    ************************************************************************************************/
@@ -152,5 +214,61 @@
           slide-left 1s ease 3.7s reverse forwards;
       }
     }
+
+    .load-view__words {
+      .word:nth-child(1) {
+        animation:
+          load-view__shadow-word 0.8s ease 4.7s forwards,
+          load-view__shadow-word 0.8s ease 5.7s reverse forwards;
+        &::before { animation: load-view__paint-word-1 0.8s ease 5.7s forwards; }
+        &::after  { animation: load-view__show-word 0.8s ease 7.5s forwards; }
+      }
+      .word:nth-child(2) {
+        animation:
+          load-view__shadow-word 0.8s ease 4.9s forwards,
+          load-view__shadow-word 0.8s ease 5.9s reverse forwards;
+        &::before {
+          animation:
+            load-view__paint-word-2 0.8s ease 5.9s forwards,
+            load-view__rotate-word-1 0.8s ease 6.7s forwards;
+        }
+        &::after { animation: load-view__show-word 0.8s ease 7.7s forwards; }
+      }
+      .word:nth-child(3) {
+        animation:
+          load-view__shadow-word 0.8s ease 5.1s forwards,
+          load-view__shadow-word 0.8s ease 6.1s reverse forwards;
+        &::before {
+          animation:
+            load-view__paint-word-1 0.8s ease 6.1s forwards,
+            load-view__rotate-word-2 0.8s ease 6.9s forwards;
+        }
+        &::after { animation: load-view__show-word 0.8s ease 7.9s forwards; }
+      }
+      .word:nth-child(4) {
+        animation:
+          load-view__shadow-word 0.8s ease 5.3s forwards,
+          load-view__shadow-word 0.8s ease 6.3s reverse forwards;
+        &::before {
+          animation:
+            load-view__paint-word-2 0.8s ease 6.3s forwards,
+            load-view__rotate-word-1 0.8s ease 7.1s forwards;
+        }
+        &::after { animation: load-view__show-word 0.8s ease 8.1s forwards; }
+      }
+      .word:nth-child(5) {
+        animation:
+          load-view__shadow-word 0.8s ease 5.5s forwards,
+          load-view__shadow-word 0.8s ease 6.5s reverse forwards;
+        &::before {
+          animation:
+            load-view__paint-word-1 0.8s ease 6.5s forwards,
+            load-view__rotate-word-2 0.8s ease 7.3s forwards;
+        }
+        &::after { animation: load-view__show-word 0.8s ease 8.3s forwards; }
+      }
+    }
+
+    .content-name { animation: fadein 2s ease 8.3s forwards; }
   }
 }
