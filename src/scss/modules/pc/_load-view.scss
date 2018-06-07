@@ -14,7 +14,7 @@
       width: 100%; height: 100%;
       background-image: url(../images/load-view/bg.svg);
       background-size: 80px;
-      opacity: 0;
+      opacity: 0.2;
     }
   }
 
@@ -97,13 +97,60 @@
     }
   }
 
+  /*** windmill ***/
+  .load-view__windmill {
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+
+    div {
+      position: relative;
+      float: left;
+      width: 50%; height: 100%;
+
+      &::before {
+        content: ""; display: block;
+        position: absolute; top: 0;
+        width: 5px; height: 100%;
+        box-sizing: border-box;
+        border-left: dashed 5px #fff;
+      }
+    }
+    div:nth-child(1) {
+      background-color: $theme-light-pink;
+      transform: translateY(-100%);
+      &::before { right: 30px; }
+    }
+    div:nth-child(2) {
+      background-color: $theme-light-yellow;
+      transform: translateY(100%);
+      &::before { left: 30px; }
+    }
+  }
+
   /************************************************************************************************
    * animation
    ************************************************************************************************/
   .load-view {
+    .load-view__bg { animation: fadeout 0.1s ease 2.5s forwards; }
     .load-view__progress-bar {
+      animation: fadeout 0.1s ease 2.5s forwards;
       .icon { animation: load-view__jump 0.9s ease-in-out 0s infinite; }
       .progress-bar div { animation: slide-right 1.8s ease-in 0s forwards; }
+    }
+
+    .load-view__windmill {
+      animation: turn1 1.2s ease 2.5s forwards;
+      div:nth-child(1) {
+        animation:
+          slide-bottom 1.2s ease 1.8s forwards,
+          slide-right 1s ease 3.7s reverse forwards;
+      }
+      div:nth-child(2) {
+        animation:
+          slide-top 1.2s ease 1.8s forwards,
+          slide-left 1s ease 3.7s reverse forwards;
+      }
     }
   }
 }
