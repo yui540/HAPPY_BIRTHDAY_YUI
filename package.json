@@ -1,0 +1,29 @@
+{
+  "name": "HAPPY_BIRTHDAY_YUI",
+  "version": "1.0.0",
+  "main": "webpack.config.js",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "build": "webpack --progress --colors",
+    "watch": "webpack --watch --colors"
+  },
+  "repository": "git@github.com:yui540/HAPPY_BIRTHDAY_YUI.git",
+  "author": "yuki540 <tabletennis540@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015-riot": "^1.1.0",
+    "css-loader": "^0.28.11",
+    "dotenv": "^5.0.1",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "node-sass": "^4.9.0",
+    "node-sass-glob-importer": "^5.1.3",
+    "riot-tag-loader": "^2.0.2",
+    "sass-loader": "^7.0.1",
+    "webpack": "^4.8.3",
+    "webpack-cli": "^2.1.3",
+    "webpack-dev-server": "^3.1.4"
+  }
+}
