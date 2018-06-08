@@ -1,0 +1,45 @@
+@keyframes load-view__jump {
+  0%   { transform: scale(0.9); }
+  30%  { transform: scale(1.05); }
+  60%  { transform: scale(0.9); }
+  100% { transform: scale(0.9); }
+}
+
+@keyframes load-view__shadow-word {
+  from { box-shadow: 0 0 0 rgba(0,0,0,0.2); }
+  to   { box-shadow: 0 0 40px rgba(0,0,0,0.2); }
+}
+
+@keyframes load-view__paint-word-1 {
+  0%   { transform: translateY(0); height: 1000%;  opacity: 0; }
+  100% { transform: translateY(100px); height: 100%; opacity: 1; }
+}
+@keyframes load-view__paint-word-2 {
+  0%   { transform: translateY(0); height: 1000%; opacity: 0; }
+  100% { transform: translateY(-100px); height: 100%; opacity: 1; }
+}
+
+@keyframes load-view__rotate-word-1 {
+  from { transform: rotate(0) translateY(-100px); }
+  to   { transform: rotate(4deg) translateY(-100px); }
+}
+@keyframes load-view__rotate-word-2 {
+  from { transform: rotate(0) translateY(100px); }
+  to   { transform: rotate(-4deg) translateY(100px); }
+}
+
+@keyframes load-view__show-word {
+  0%   { transform: scale(0); }
+  50%  { transform: scale(1.5); }
+  100% { transform: scale(1); }
+}
+
+@keyframes load-view__show-char-name {
+  from { transform: translate(-50%, -50%) scale(1.05); opacity: 0; }
+  to   { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+@keyframes load-view__end {
+  from { transform: rotate(90deg); }
+  to   { transform: rotate(0deg); }
+}

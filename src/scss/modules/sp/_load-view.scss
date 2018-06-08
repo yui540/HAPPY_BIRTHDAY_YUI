@@ -1,0 +1,313 @@
+@include sp-layout {
+  .load-view {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    overflow: hidden;
+
+    &::before {
+      content: ""; display: block;
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-image: url(../images/load-view/bg.svg);
+      background-size: 80px;
+      opacity: 0.2;
+    }
+  }
+
+  /*** bg ***/
+  .load-view__bg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: $theme-brown;
+
+    .inner {
+      position: absolute;
+      top: 10px; left: 10px;
+      width: calc(100% - 20px); height: calc(100% - 20px);
+      background-color: #fff;
+      transform: rotate(-2deg);
+
+      &::before {
+        content: ""; display: block;
+        position: absolute;
+        left: 10px; top: 10px;
+        width: calc(100% - 20px); height: calc(100% - 20px);
+        box-sizing: border-box;
+        border: dashed 2px $theme-light-brown;
+      }
+
+      div {
+        position: absolute;
+        width: 30px; height: 30px;
+
+        &::before,
+        &::after {
+          content: ""; display: block;
+          position: absolute; background-color: $theme-light-brown;
+        }
+        &::before { width: 100%; height: 4px; }
+        &::after  { width: 4px; height: 100%; }
+      }
+      div:nth-child(1) { top: 10px; left: 10px; }
+      div:nth-child(2) {
+        top: 10px; right: 10px;
+        &::after { right: 0; }
+      }
+      div:nth-child(3) {
+        bottom: 10px; left: 10px;
+        &::before { bottom: 0; }
+      }
+      div:nth-child(4) {
+        bottom: 10px; right: 10px;
+        &::before { bottom: 0; }
+        &::after  { right: 0; }
+      }
+    }
+  }
+
+  /*** progress bar ***/
+  .load-view__progress-bar {
+    position: absolute;
+    top: calc(50% - 45.75px); left: calc(50% - 150px);
+    width: 300px; height: 91.5px;
+
+    .icon {
+      display: block;
+      margin: 0 auto;
+      width: 80px;
+    }
+
+    .progress-bar {
+      width: 160px; height: 3px;
+      margin: 0 auto;
+      margin-top: 10px;
+      background-color: #eee;
+      overflow: hidden;
+
+      div {
+        width: 100%; height: 100%;
+        background-color: $theme-brown;
+        transform: translateX(-100%);
+      }
+    }
+  }
+
+  /*** windmill ***/
+  .load-view__windmill {
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+
+    div {
+      position: relative;
+      float: left;
+      width: 50%; height: 100%;
+
+      &::before {
+        content: ""; display: block;
+        position: absolute; top: 0;
+        width: 3px; height: 100%;
+        box-sizing: border-box;
+        border-left: dashed 3px #fff;
+      }
+    }
+    div:nth-child(1) {
+      background-color: $theme-light-pink;
+      transform: translateY(-100%);
+      &::before { right: 15px; }
+    }
+    div:nth-child(2) {
+      background-color: $theme-light-yellow;
+      transform: translateY(100%);
+      &::before { left: 15px; }
+    }
+  }
+
+  /*** words ***/
+  .load-view__words {
+    position: absolute;
+    top: calc(50% - 31.5px); left: calc(50% - 153.5px);
+    width: 307px; height: 63px;
+    
+    .word {
+      position: relative;
+      float: left;
+      width: 55px; height: 55px;
+      margin-right: 8px;
+      box-shadow: 0 0 0px rgba(0,0,0,0.1);
+
+      &::before,
+      &::after  { content: ""; display: block; position: absolute; }
+      &::before { left: 0; width: 100%; height: 500%; opacity: 0; }
+      &::after {
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background-size: auto 60%;
+        background-position: center;
+        background-repeat: no-repeat;
+        transform: scale(0);
+      }
+    }
+    .word:nth-child(2n) { margin-top: 8px; }
+    .word:last-child    { margin-right: 0px; }
+
+    .word:nth-child(1) {
+      &::before { bottom: 100px; background-color: $theme-light-pink; }
+      &::after  { background-image: url(../images/load-view/words/1.svg); }
+    }
+    .word:nth-child(2) {
+      &::before { top: 100px; background-color: $theme-light-orange; }
+      &::after  { background-image: url(../images/load-view/words/2.svg); }
+    }
+    .word:nth-child(3) {
+      &::before { bottom: 100px; background-color: $theme-light-yellow; }
+      &::after  { background-image: url(../images/load-view/words/3.svg); }
+    }
+    .word:nth-child(4) {
+      &::before { top: 100px; background-color: $theme-light-pink; }
+      &::after  { background-image: url(../images/load-view/words/4.svg); }
+    }
+    .word:nth-child(5) {
+      &::before { bottom: 100px; background-color: $theme-light-orange; }
+      &::after  { background-image: url(../images/load-view/words/5.svg); }
+    }
+
+    &::after { content: ""; display: block; clear: both; }
+  }
+
+  /*** content name ***/
+  .content-name {
+    position: absolute;
+    top: calc(50% + 40px); left: calc(50% - 150px);
+    width: 300px;
+    display: block;
+    opacity: 0;
+  }
+
+  /*** end ***/
+  .load-view__end {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+
+    div {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+    }
+    div:nth-child(2n - 1) { transform-origin: right top; transform: rotate(90deg); }
+    div:nth-child(2n)     { transform-origin: left bottom; transform: rotate(90deg); }
+    div:nth-child(1) { background-color: $theme-light-pink; z-index: 1; }
+    div:nth-child(2) { background-color: $theme-light-orange; z-index: 2; }
+    div:nth-child(3) { background-color: $theme-light-yellow; z-index: 3; }
+    div:nth-child(4) { background-color: $theme-light-purple; z-index: 4; }
+    div:nth-child(5) { background-color: $theme-light-green; z-index: 5; }
+    div:nth-child(6) { background-color: $theme-light-blue; z-index: 7; }
+    
+    .char-name {
+      display: block;
+      width: 200px;
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      z-index: 6;
+    }
+  }
+
+
+  /************************************************************************************************
+   * animation
+   ************************************************************************************************/
+  .load-view {
+    .load-view__bg { animation: fadeout 0.1s ease 2.5s forwards; }
+    .load-view__progress-bar {
+      animation: fadeout 0.1s ease 2.5s forwards;
+      .icon { animation: load-view__jump 0.9s ease-in-out 0s infinite; }
+      .progress-bar div { animation: slide-right 1.8s ease-in 0s forwards; }
+    }
+
+    .load-view__windmill {
+      animation: turn1 1.2s ease 2.5s forwards;
+      div:nth-child(1) {
+        animation:
+          slide-bottom 1.2s ease 1.8s forwards,
+          slide-right 1s ease 3.7s reverse forwards;
+      }
+      div:nth-child(2) {
+        animation:
+          slide-top 1.2s ease 1.8s forwards,
+          slide-left 1s ease 3.7s reverse forwards;
+      }
+    }
+
+    .load-view__words {
+      .word:nth-child(1) {
+        animation:
+          load-view__shadow-word 0.8s ease 4.7s forwards,
+          load-view__shadow-word 0.8s ease 5.7s reverse forwards;
+        &::before { animation: load-view__paint-word-1 0.8s ease 5.7s forwards; }
+        &::after  { animation: load-view__show-word 0.8s ease 7.5s forwards; }
+      }
+      .word:nth-child(2) {
+        animation:
+          load-view__shadow-word 0.8s ease 4.9s forwards,
+          load-view__shadow-word 0.8s ease 5.9s reverse forwards;
+        &::before {
+          animation:
+            load-view__paint-word-2 0.8s ease 5.9s forwards,
+            load-view__rotate-word-1 0.8s ease 6.7s forwards;
+        }
+        &::after { animation: load-view__show-word 0.8s ease 7.7s forwards; }
+      }
+      .word:nth-child(3) {
+        animation:
+          load-view__shadow-word 0.8s ease 5.1s forwards,
+          load-view__shadow-word 0.8s ease 6.1s reverse forwards;
+        &::before {
+          animation:
+            load-view__paint-word-1 0.8s ease 6.1s forwards,
+            load-view__rotate-word-2 0.8s ease 6.9s forwards;
+        }
+        &::after { animation: load-view__show-word 0.8s ease 7.9s forwards; }
+      }
+      .word:nth-child(4) {
+        animation:
+          load-view__shadow-word 0.8s ease 5.3s forwards,
+          load-view__shadow-word 0.8s ease 6.3s reverse forwards;
+        &::before {
+          animation:
+            load-view__paint-word-2 0.8s ease 6.3s forwards,
+            load-view__rotate-word-1 0.8s ease 7.1s forwards;
+        }
+        &::after { animation: load-view__show-word 0.8s ease 8.1s forwards; }
+      }
+      .word:nth-child(5) {
+        animation:
+          load-view__shadow-word 0.8s ease 5.5s forwards,
+          load-view__shadow-word 0.8s ease 6.5s reverse forwards;
+        &::before {
+          animation:
+            load-view__paint-word-1 0.8s ease 6.5s forwards,
+            load-view__rotate-word-2 0.8s ease 7.3s forwards;
+        }
+        &::after { animation: load-view__show-word 0.8s ease 8.3s forwards; }
+      }
+    }
+
+    .content-name { animation: fadein 2s ease 7.6s forwards; }
+
+    .load-view__end {
+      div:nth-child(1) { animation: load-view__end 0.6s ease 8.9s forwards; }
+      div:nth-child(2) { animation: load-view__end 0.6s ease 9.2s forwards; }
+      div:nth-child(3) { animation: load-view__end 0.6s ease 9.5s forwards; }
+      div:nth-child(4) { animation: load-view__end 0.6s ease 9.8s forwards; }
+      div:nth-child(5) { animation: load-view__end 0.6s ease 10.1s forwards; }
+      div:nth-child(6) { animation: load-view__end 0.6s ease 10.4s forwards; }
+      .char-name       { animation: load-view__show-char-name 1.5s ease 8.9s forwards; }
+    }
+  }
+}
