@@ -33,3 +33,13 @@
   50%  { transform: scale(1.5); }
   100% { transform: scale(1); }
 }
+
+@keyframes load-view__show-char-name {
+  from { transform: translate(-50%, -50%) scale(1.05); opacity: 0; }
+  to   { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+@keyframes load-view__end {
+  from { transform: rotate(90deg); }
+  to   { transform: rotate(0deg); }
+}
