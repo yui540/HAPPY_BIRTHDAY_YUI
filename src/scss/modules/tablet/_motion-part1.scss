@@ -1,0 +1,199 @@
+@include tablet-layout {
+  .motion-part1 {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: #c7e5ef;
+    overflow: hidden;
+    z-index: 9;
+
+    &::before {
+      content: ""; display: block;
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-image: url(../images/motion-part1/bg.svg);
+      background-size: 25px;
+      opacity: 0;
+    }
+  }
+
+  /*** text ***/
+  .motion-part1__text {
+    position: absolute; top: 10px;
+    width: 180px; height: calc(100% - 20px);
+    overflow: hidden;
+
+    &::before {
+      content: ""; display: block;
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-size: 100% auto;
+      background-repeat: no-repeat;
+      opacity: 0;
+    }
+
+    div {
+      position: absolute; top: 0;
+      width: 25%; height: 100%;
+      transform: translateY(100%);
+
+      &::after {
+        content: ""; display: block;
+        width: 100%; height: 100%;
+        background-color: #fff;
+      }
+    }
+    div:nth-child(1) { left: 0%; }
+    div:nth-child(2) { left: 25%; }
+    div:nth-child(3) { right: 25%; }
+    div:nth-child(4) { right: 0%; }
+  }
+  .motion-part1__text_type_1 {
+    left: 10px;
+
+    &::before {
+      background-image: url(../images/motion-part1/happy-birthday/1.svg);
+      background-position: center bottom;
+    }
+  }
+  .motion-part1__text_type_2 {
+    right: 10px;
+
+    &::before {
+      background-image: url(../images/motion-part1/happy-birthday/2.svg);
+      background-position: center top;
+    }
+  }
+  
+  /*** char ***/
+  .motion-part1__char {
+    position: absolute;
+    bottom: 0; left: 50%;
+    display: block;
+    height: 95%;
+    transform: translateX(-50%) scale(0);
+    transform-origin: center bottom;
+  }
+
+  /*** char-name ***/
+  .motion-part1__char-name {
+    position: absolute;
+    bottom: 5%; right: 5%;
+    display: block;
+    width: 50%;
+    transform: scale(0);
+  }
+
+  /*** end ***/
+  .motion-part1__end {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+
+    .color-bg {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      opacity: 0;
+      background-color: #fff;
+    }
+    
+    .color-ball {
+      position: absolute;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      transform: scale(0);
+    }
+    .color-ball-pink {
+      top: calc(50% + 150px); left: calc(50% - 300px);
+      background-color: $theme-light-pink;
+    }
+    .color-ball-blue   {
+      top: calc(50% - 300px); left: calc(50% + 150px);
+      background-color: $theme-light-blue;
+    }
+    .color-ball-yellow {
+      top: calc(50% - 300px); left: calc(50% - 300px);
+      background-color: $theme-light-yellow;
+    }
+    .color-ball-purple {
+      top: calc(50% + 150px); left: calc(50% + 150px);
+      background-color: $theme-light-purple;
+    }
+    .color-ball-white {
+      top: calc(50% - 150px); left: calc(50% - 150px);
+      background-color: #fff;
+    }
+
+    .say {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 80%;
+      display: block;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+    }
+  }
+  
+
+  /***********************************************************************************************
+   * animation
+   ***********************************************************************************************/
+  .motion-part1[data-state="start"] {
+    &::before { animation: motion-part1__show-bg 0.5s ease 0s forwards; }
+
+    .motion-part1__text_type_1 {
+      &::before { animation: fadein 1s ease 0.95s forwards; }
+      div:nth-child(1) {
+        animation: slide-bottom 0.5s ease 0.5s forwards;
+        &::after { animation: slide-top 0.5s ease 0.95s reverse forwards; }
+      }
+      div:nth-child(2) {
+        animation: slide-bottom 0.5s ease 0.65s forwards;
+        &::after { animation: slide-top 0.5s ease 1.1s reverse forwards; }
+      }
+      div:nth-child(3) {
+        animation: slide-bottom 0.5s ease 0.8s forwards;
+        &::after { animation: slide-top 0.5s ease 1.25s reverse forwards; }
+      }
+      div:nth-child(4) {
+        animation: slide-bottom 0.5s ease 0.95s forwards;
+        &::after { animation: slide-top 0.5s ease 1.4s reverse forwards; }
+      }
+    }
+    .motion-part1__text_type_2 {
+      &::before { animation: fadein 1s ease 2.35s forwards; }
+      div:nth-child(4) {
+        animation: slide-top 0.5s ease 1.9s forwards;
+        &::after { animation: slide-bottom 0.5s ease 2.35s reverse forwards; }
+      }
+      div:nth-child(3) {
+        animation: slide-top 0.5s ease 2.05s forwards;
+        &::after { animation: slide-bottom 0.5s ease 2.5s reverse forwards; }
+      }
+      div:nth-child(2) {
+        animation: slide-top 0.5s ease 2.2s forwards;
+        &::after { animation: slide-bottom 0.5s ease 2.65s reverse forwards; }
+      }
+      div:nth-child(1) {
+        animation: slide-top 0.5s ease 2.35s forwards;
+        &::after { animation: slide-bottom 0.5s ease 2.8s reverse forwards; }
+      }
+    }
+
+    .motion-part1__char      { animation: motion-part1__show-char__tablet 0.7s ease 3.3s forwards; }
+    .motion-part1__char-name { animation: motion-part1__show-name__tablet 0.7s ease 3.5s forwards; }
+
+    .motion-part1__end {
+      .say               { animation: fadein 1s ease 4.2s forwards; }
+      .color-ball-pink   { animation: motion-part1__show-color-ball 0.6s ease 4.2s forwards; }
+      .color-ball-blue   { animation: motion-part1__show-color-ball 0.6s ease 4.4s forwards; }
+      .color-ball-yellow { animation: motion-part1__show-color-ball 0.6s ease 4.6s forwards; }
+      .color-ball-purple { animation: motion-part1__show-color-ball 0.6s ease 4.8s forwards; }
+      .color-ball-white  { animation: motion-part1__show-color-ball 0.6s ease 5s forwards; }
+      .color-bg          { animation: fadein 1s ease 5s forwards; }
+    }
+  }
+}

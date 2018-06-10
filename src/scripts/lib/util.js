@@ -1,3 +1,7 @@
+const root         = document.getElementById('root')
+const load_view    = document.querySelector('.load-view')
+const motion_part1 = document.querySelector('.motion-part1')
+
 /**
  * 画像のプリロード
  * @param images   : 画像パスの配列
@@ -41,4 +45,12 @@ export const isSP = () => {
  */
 export const isPC = () => {
   return !isSP()
+}
+
+/**
+ * load-viewの終了
+ */
+export const finLoadView = () => {
+  root.removeChild(load_view)
+  motion_part1.setAttribute('data-state', 'start')
 }

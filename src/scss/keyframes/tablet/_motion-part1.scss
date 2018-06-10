@@ -1,0 +1,10 @@
+@keyframes motion-part1__show-name__tablet {
+  0%   { transform: scale(0); }
+  40%  { transform: scale(1.5); }
+  100% { transform: scale(1); }
+}
+@keyframes motion-part1__show-char__tablet {
+  0%   { transform: translateX(-50%) scale(0); }
+  40%  { transform: translateX(-50%) scale(1.1); }
+  100% { transform: translateX(-50%) scale(1); }
+}
