@@ -3,6 +3,8 @@
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 100%;
+    min-width: $min-width;
+    min-height: $min-height;
     background-color: #c7e5ef;
     z-index: 11;
 
@@ -17,10 +19,98 @@
     }
   }
 
+  /*** text ***/
+  .motion-part1__text {
+    position: absolute; top: 10px;
+    width: 250px; height: calc(100% - 20px);
+    overflow: hidden;
+
+    &::before {
+      content: ""; display: block;
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-size: 100% auto;
+      background-repeat: no-repeat;
+      opacity: 0;
+    }
+
+    div {
+      position: absolute; top: 0;
+      width: 25%; height: 100%;
+      transform: translateY(100%);
+
+      &::after {
+        content: ""; display: block;
+        width: 100%; height: 100%;
+        background-color: #fff;
+      }
+    }
+    div:nth-child(1) { left: 0%; }
+    div:nth-child(2) { left: 25%; }
+    div:nth-child(3) { right: 25%; }
+    div:nth-child(4) { right: 0%; }
+  }
+  .motion-part1__text_type_1 {
+    left: 10px;
+
+    &::before {
+      background-image: url(../images/motion-part1/happy-birthday/1.svg);
+      background-position: center bottom;
+    }
+  }
+  .motion-part1__text_type_2 {
+    right: 10px;
+
+    &::before {
+      background-image: url(../images/motion-part1/happy-birthday/2.svg);
+      background-position: center top;
+    }
+  }
+
   /***********************************************************************************************
    * animation
    ***********************************************************************************************/
   .motion-part1 {
     &::before { animation: motion-part1__show-bg 0.5s ease 0s forwards; }
+
+    .motion-part1__text_type_1 {
+      &::before { animation: fadein 1s ease 0.95s forwards; }
+      div:nth-child(1) {
+        animation: slide-bottom 0.5s ease 0.5s forwards;
+        &::after { animation: slide-top 0.5s ease 0.95s reverse forwards; }
+      }
+      div:nth-child(2) {
+        animation: slide-bottom 0.5s ease 0.65s forwards;
+        &::after { animation: slide-top 0.5s ease 1.1s reverse forwards; }
+      }
+      div:nth-child(3) {
+        animation: slide-bottom 0.5s ease 0.8s forwards;
+        &::after { animation: slide-top 0.5s ease 1.25s reverse forwards; }
+      }
+      div:nth-child(4) {
+        animation: slide-bottom 0.5s ease 0.95s forwards;
+        &::after { animation: slide-top 0.5s ease 1.4s reverse forwards; }
+      }
+    }
+    .motion-part1__text_type_2 {
+      &::before { animation: fadein 1s ease 2.35s forwards; }
+      div:nth-child(4) {
+        animation: slide-top 0.5s ease 1.9s forwards;
+        &::after { animation: slide-bottom 0.5s ease 2.35s reverse forwards; }
+      }
+      div:nth-child(3) {
+        animation: slide-top 0.5s ease 2.05s forwards;
+        &::after { animation: slide-bottom 0.5s ease 2.5s reverse forwards; }
+      }
+      div:nth-child(2) {
+        animation: slide-top 0.5s ease 2.2s forwards;
+        &::after { animation: slide-bottom 0.5s ease 2.65s reverse forwards; }
+      }
+      div:nth-child(1) {
+        animation: slide-top 0.5s ease 2.35s forwards;
+        &::after { animation: slide-bottom 0.5s ease 2.8s reverse forwards; }
+      }
+    }
   }
 }
