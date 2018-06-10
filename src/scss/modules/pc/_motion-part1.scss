@@ -1,0 +1,26 @@
+@include pc-layout {
+  .motion-part1 {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: #c7e5ef;
+    z-index: 11;
+
+    &::before {
+      content: ""; display: block;
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-image: url(../images/motion-part1/bg.svg);
+      background-size: 25px;
+      opacity: 0;
+    }
+  }
+
+  /***********************************************************************************************
+   * animation
+   ***********************************************************************************************/
+  .motion-part1 {
+    &::before { animation: motion-part1__show-bg 0.5s ease 0s forwards; }
+  }
+}
