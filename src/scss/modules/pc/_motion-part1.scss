@@ -6,6 +6,7 @@
     min-width: $min-width;
     min-height: $min-height;
     background-color: #c7e5ef;
+    overflow: hidden;
     z-index: 11;
 
     &::before {
@@ -67,6 +68,26 @@
       background-position: center top;
     }
   }
+  
+  /*** char ***/
+  .motion-part1__char {
+    position: absolute;
+    bottom: 0; left: 50%;
+    display: block;
+    height: 95%;
+    transform: translateX(-73%) scale(0);
+    transform-origin: center bottom;
+  }
+
+  /*** char-name ***/
+  .motion-part1__char-name {
+    position: absolute;
+    top: 50%; left: 50%;
+    display: block;
+    height: 65%;
+    transform: translate(-20%, -50%) scale(0);
+  }
+  
 
   /***********************************************************************************************
    * animation
@@ -112,5 +133,8 @@
         &::after { animation: slide-bottom 0.5s ease 2.8s reverse forwards; }
       }
     }
+
+    .motion-part1__char      { animation: motion-part1__show-char 0.7s ease 3.3s forwards; }
+    .motion-part1__char-name { animation: motion-part1__show-name 0.7s ease 3.5s forwards; }
   }
 }
