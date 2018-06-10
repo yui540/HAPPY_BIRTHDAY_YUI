@@ -7,7 +7,7 @@
     min-height: $min-height;
     background-color: #c7e5ef;
     overflow: hidden;
-    z-index: 11;
+    z-index: 9;
 
     &::before {
       content: ""; display: block;
@@ -87,12 +87,63 @@
     height: 65%;
     transform: translate(-20%, -50%) scale(0);
   }
+
+  /*** end ***/
+  .motion-part1__end {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+
+    .color-bg {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      opacity: 0;
+      background-color: #fff;
+    }
+    
+    .color-ball {
+      position: absolute;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      transform: scale(0);
+    }
+    .color-ball-pink {
+      top: calc(50% + 150px); left: calc(50% - 300px);
+      background-color: $theme-light-pink;
+    }
+    .color-ball-blue   {
+      top: calc(50% - 300px); left: calc(50% + 150px);
+      background-color: $theme-light-blue;
+    }
+    .color-ball-yellow {
+      top: calc(50% - 300px); left: calc(50% - 300px);
+      background-color: $theme-light-yellow;
+    }
+    .color-ball-purple {
+      top: calc(50% + 150px); left: calc(50% + 150px);
+      background-color: $theme-light-purple;
+    }
+    .color-ball-white {
+      top: calc(50% - 150px); left: calc(50% - 150px);
+      background-color: #fff;
+    }
+
+    .say {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 600px;
+      display: block;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+    }
+  }
   
 
   /***********************************************************************************************
    * animation
    ***********************************************************************************************/
-  .motion-part1 {
+  .motion-part1[data-state="start"] {
     &::before { animation: motion-part1__show-bg 0.5s ease 0s forwards; }
 
     .motion-part1__text_type_1 {
@@ -136,5 +187,15 @@
 
     .motion-part1__char      { animation: motion-part1__show-char 0.7s ease 3.3s forwards; }
     .motion-part1__char-name { animation: motion-part1__show-name 0.7s ease 3.5s forwards; }
+
+    .motion-part1__end {
+      .say               { animation: fadein 1s ease 4.2s forwards; }
+      .color-ball-pink   { animation: motion-part1__show-color-ball 0.6s ease 4.2s forwards; }
+      .color-ball-blue   { animation: motion-part1__show-color-ball 0.6s ease 4.4s forwards; }
+      .color-ball-yellow { animation: motion-part1__show-color-ball 0.6s ease 4.6s forwards; }
+      .color-ball-purple { animation: motion-part1__show-color-ball 0.6s ease 4.8s forwards; }
+      .color-ball-white  { animation: motion-part1__show-color-ball 0.6s ease 5s forwards; }
+      .color-bg          { animation: fadein 1s ease 5s forwards; }
+    }
   }
 }
