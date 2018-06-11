@@ -6,5 +6,50 @@
     min-width: $min-width;
     min-height: $min-height;
     background-color: #fff;
+    overflow: hidden;
+    z-index: 11;
+  }
+
+  /*** bg ***/
+  .motion-part2__bg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    opacity: 0;
+
+    div {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      box-sizing: border-box;
+    }
+
+    div:nth-child(1) {
+      background-image: url(../images/motion-part2/bg-text.svg);
+      background-size: 250px;
+    }
+    div:nth-child(2) {
+      background-image: url(../images/motion-part2/bg-star.svg);
+      background-size: 20px;
+      opacity: 0.5;
+    }
+    div:nth-child(3) {
+      top: 0%; width: 150%;
+      background-image: url(../images/motion-part2/bg-dot.svg);
+      background-size: 25px;
+      border-top: solid 5px $theme-light-pink;
+      transform-origin: left top;
+      transform: rotate(0deg);
+    }
+  }
+
+  /**********************************************************************************************
+   * animation
+   **********************************************************************************************/
+  .motion-part2 {
+    .motion-part2__bg {
+      animation: fadein 1.4s ease 0s forwards;
+      div:nth-child(3) { animation: motion-part2__show-bg 1s ease 0.4s forwards; }
+    }
   }
 }
