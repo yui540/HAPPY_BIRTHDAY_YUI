@@ -1,6 +1,7 @@
 const root         = document.getElementById('root')
 const load_view    = document.querySelector('.load-view')
 const motion_part1 = document.querySelector('.motion-part1')
+const motion_part2 = document.querySelector('.motion-part2')
 
 /**
  * 画像のプリロード
@@ -53,4 +54,17 @@ export const isPC = () => {
 export const finLoadView = () => {
   root.removeChild(load_view)
   motion_part1.setAttribute('data-state', 'start')
+
+  document.querySelector('.motion-part1__end .color-bg')
+    .addEventListener('animationend', () => {
+    finMotionPart1()
+  })
+}
+
+/**
+ * motion-part1の終了
+ */
+export const finMotionPart1 = () => {
+  root.removeChild(motion_part1)
+  motion_part2.setAttribute('data-state', 'start')
 }
