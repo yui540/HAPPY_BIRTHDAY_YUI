@@ -1,0 +1,6 @@
+@keyframes motion-part2__end__sp {
+  0%   { transform: translateY(-100%); box-shadow: 0 0 0px rgba(0,0,0,0.6); }
+  60%  { transform: translateY(0%); box-shadow: 0 0 30px rgba(0,0,0,0.6); }
+  80%  { transform: translateY(-20px); box-shadow: 0 0 30px rgba(0,0,0,0.6); }
+  100% { transform: translateY(0%); box-shadow: 0 0 30px rgba(0,0,0,0.6); }
+}

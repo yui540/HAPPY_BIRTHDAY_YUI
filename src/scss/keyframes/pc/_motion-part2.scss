@@ -1,0 +1,16 @@
+@keyframes motion-part2__show-bg {
+  from { top: 0%; transform: rotate(0deg); }
+  to   { top: 30%; transform: rotate(30deg); }
+}
+
+@keyframes motion-part2__show-say {
+  from { transform: translate(-50%, -50%) rotate(5deg) scale(1.4); opacity: 0; }
+  to   { transform: translate(-50%, -50%) rotate(5deg) scale(1); opacity: 1; }
+}
+
+@keyframes motion-part2__end {
+  0%   { transform: translateY(-100%); box-shadow: 0 0 0px rgba(0,0,0,0.6); }
+  60%  { transform: translateY(0%); box-shadow: 0 0 30px rgba(0,0,0,0.6); }
+  80%  { transform: translateY(-50px); box-shadow: 0 0 30px rgba(0,0,0,0.6); }
+  100% { transform: translateY(0%); box-shadow: 0 0 30px rgba(0,0,0,0.6); }
+}
