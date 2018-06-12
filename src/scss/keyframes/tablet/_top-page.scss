@@ -1,0 +1,14 @@
+@keyframes top-page__show-bg {
+  from { opacity: 0; }
+  to   { opacity: 0.3; }
+}
+
+@keyframes top-page__show-frame__tablet {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-8deg); }
+}
+
+@keyframes top-page__show-happy-birthday__tablet {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0px); }
+}
