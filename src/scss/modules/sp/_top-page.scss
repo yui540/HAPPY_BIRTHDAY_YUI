@@ -1,0 +1,140 @@
+@include sp-layout {
+  .top-page {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: #fff;
+    overflow: hidden;
+    z-index: 7;
+  }
+
+  /*** bg ***/
+  .top-page__bg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+
+    &::before,
+    &::after {
+      content: ""; display: block;
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+    }
+    &::before {
+      background-image: url(../images/top-page/bg-dot.svg);
+      background-size: 120px;
+      opacity: 0.5;
+    }
+    &::after {
+      background-image: url(../images/top-page/bg-dog.svg);
+      background-size: 200px;
+      opacity: 0;
+    }
+  }
+
+  /*** frame ***/
+  .top-page__frame {
+    position: absolute;
+    width: 150%; height: 50%;
+    box-shadow: 0 0 30px rgba(0,0,0,0.3) inset;
+    background-color: #fff;
+    transform: rotate(0deg);
+  }
+  .top-page__frame_type_1 {
+    top: -50%; right: 0;
+    transform-origin: right bottom;
+  }
+  .top-page__frame_type_2 {
+    bottom: -50%; left: 0;
+    transform-origin: left top;
+  }
+
+  /*** yui ***/
+  .top-page__yui {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image: url(../images/top-page/yui.svg);
+    background-size: auto 95%;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    opacity: 0;
+  }
+
+  /*** happy-birthday ***/
+  .top-page__happy-birthday {
+    position: absolute;
+    width: 100%;
+    bottom: 30px; left: 0px;
+    
+    img {
+      display: block;
+      width: 70%;
+      margin: 0 auto;
+      background-color: rgba(255,255,255,0.7);
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      padding: 10px 25px;
+      opacity: 0;
+    }
+  }
+
+  /*** eye ***/
+  .top-page__eye {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+
+    &::before,
+    &::after {
+      content: ""; display: block;
+      width: 100%; height: 50%;
+      background-color: #000;
+    }
+    &::before { transform: translateY(-100%); }
+    &::after  { transform: translateY(100%); }
+  }
+
+  /*** nav ***/
+  .top-page__nav {
+    position: absolute;
+    top: 0; right: 0;
+    width: 35%;
+
+    .nav-li {
+      display: block;
+
+      img {
+        display: block;
+        width: 100%;
+        transform: translateX(100%);
+      }
+    }
+  }
+
+
+  /**********************************************************************************************
+   * animation
+   **********************************************************************************************/
+  .top-page[data-state="start"] {
+    .top-page__bg { &::after { animation: top-page__show-bg 0.05s ease 0.55s forwards; } }
+
+    .top-page__yui { animation: fadein 0.05s ease 1.75s forwards; }
+
+    .top-page__frame_type_1,
+    .top-page__frame_type_2 { animation: top-page__show-frame__tablet 2s ease 2.4s forwards; }
+
+    .top-page__happy-birthday img { animation: top-page__show-happy-birthday__tablet 2s ease 2.6s forwards; }
+
+    .top-page__eye {
+      &::before { animation: slide-bottom 0.6s ease-in-out 0s 4 alternate; }
+      &::after  { animation: slide-top 0.6s ease-in-out 0s 4 alternate; }
+    }
+    
+    .top-page__nav {
+      .nav-li:nth-child(1) img { animation: slide-left 0.5s ease 3s forwards; }
+      .nav-li:nth-child(2) img { animation: slide-left 0.5s ease 3.1s forwards; }
+      .nav-li:nth-child(3) img { animation: slide-left 0.5s ease 3.2s forwards; }
+    }
+  }
+}
