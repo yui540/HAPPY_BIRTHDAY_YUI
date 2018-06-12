@@ -1,0 +1,8 @@
+@keyframes other-page__show-page {
+  from { transform: rotate(90deg); }
+  to   { transform: rotate(0deg); }
+}
+@keyframes other-page__hidden-page {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(90deg); }
+}
