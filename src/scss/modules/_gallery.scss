@@ -1,0 +1,104 @@
+.gallery-page {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(255,255,255,0.6);
+  overflow: hidden;
+  display: none;
+
+  &::before {
+    content: ""; display: block;
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-size: auto 100%;
+    background-image: url(../images/developer-page/bg-yui.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.2;
+  }
+
+  .inner {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .title img {
+    width: 480px;
+    margin: 0 auto;
+    margin-top: 70px;
+    display: block;
+  }
+
+  .img-box {
+    width: 800px;
+    margin: 0 auto;
+    margin-top: 70px;
+
+    .img {
+      float: left;
+      display: block;
+      margin-right: 10px;
+      margin-bottom: 30px;
+      width: 395px; height: 220px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    .img:nth-child(1) { background-image: url(../images/gallery-page/1.png); }
+    .img:nth-child(2) { background-image: url(../images/gallery-page/2.png); }
+    .img:nth-child(3) { background-image: url(../images/gallery-page/3.png); }
+    .img:nth-child(4) { background-image: url(../images/gallery-page/4.png); }
+    .img:nth-child(2n) { margin-right: 0; }
+
+    &::after { content: ""; display: block; clear: both; }
+  }
+}
+
+@include sp-layout {
+  .gallery-page {
+    .title img {
+      width: 80%;
+    }
+
+    .img-box {
+      width: 100%;
+
+      .img {
+        float: none;
+        margin-right: 0;
+        margin: 0 auto;
+        margin-bottom: 40px;
+        width: 100%; height: 0;
+        padding-bottom: 65%;
+      }
+      .img:nth-child(2n) { margin: 0 auto; margin-bottom: 40px; }
+    }
+  }
+}
+
+@include tablet-layout {
+  .gallery-page {
+    .title img {
+      width: 80%;
+      margin-top: 130px;
+    }
+
+    .img-box {
+      width: 100%;
+
+      .img {
+        float: none;
+        margin-right: 0;
+        margin: 0 auto;
+        margin-bottom: 40px;
+        width: 100%; height: 0;
+        padding-bottom: 65%;
+      }
+      .img:nth-child(2n) { margin: 0 auto; margin-bottom: 40px; }
+    }
+  }
+}
