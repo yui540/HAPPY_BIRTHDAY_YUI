@@ -1,8 +1,11 @@
-const root         = document.getElementById('root')
-const load_view    = document.querySelector('.load-view')
-const motion_part1 = document.querySelector('.motion-part1')
-const motion_part2 = document.querySelector('.motion-part2')
-const top_page     = document.querySelector('.top-page')
+const root           = document.getElementById('root')
+const load_view      = document.querySelector('.load-view')
+const motion_part1   = document.querySelector('.motion-part1')
+const motion_part2   = document.querySelector('.motion-part2')
+const top_page       = document.querySelector('.top-page')
+const other_page     = document.querySelector('.other-page')
+const developer_page = document.querySelector('.developer-page')
+const gallery_page   = document.querySelector('.gallery-page')
 
 /**
  * 画像のプリロード
@@ -87,10 +90,7 @@ export const finMotionPart2 = () => {
  * ページリンクのイベント監視
  */
 export const bindPageLink = () => {
-  const other_page     = document.querySelector('.other-page')
-  const developer_page = document.querySelector('.developer-page')
-  const gallery_page   = document.querySelector('.gallery-page')
-  const links          = document.querySelectorAll('.page-link')
+  const links = document.querySelectorAll('.page-link')
 
   /* click ----------------------------------------------------------------- */
   links.forEach(link => {
@@ -104,5 +104,19 @@ export const bindPageLink = () => {
 
       other_page.setAttribute('data-state', 'open')
     })
+  })
+}
+
+/**
+ * 閉じるボタンのイベント監視
+ */
+export const bindCloseBtn = () => {
+  const close_btn = document.querySelector('.close-btn')
+
+  /* click ---------------------------------------------------------------- */
+  close_btn.addEventListener('click', () => {
+    other_page.setAttribute('data-state', 'close')
+    developer_page.style.display = 'none'
+    gallery_page.style.display = 'none'
   })
 }
