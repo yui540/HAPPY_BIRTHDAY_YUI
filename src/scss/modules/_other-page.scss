@@ -1,0 +1,88 @@
+.other-page {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-image: url(../images/motion-part2/bg-text.svg);
+  background-size: 200px;
+  background-color: #eee;
+  transform-origin: right top;
+  transform: rotate(90deg);
+  overflow: hidden;
+  z-index: 11;
+
+  &::before {
+    content: ""; display: block;
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image: url(../images/motion-part2/bg-label.svg);
+    background-size: 180px;
+    transform-origin: right top;
+    transform: rotate(90deg);
+  }
+
+  .page {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image: url(../images/top-page/bg-dot.svg);
+    background-size: 100px;
+    background-color: #fff;
+    transform-origin: right top;
+    transform: rotate(90deg);
+  }
+}
+
+.other-page[data-state="open"] {
+  animation: other-page__show-page 0.6s ease 0s forwards;
+  &::before { animation: other-page__show-page 0.6s ease 0.2s forwards; }
+  .page     { animation: other-page__show-page 0.6s ease 0.4s forwards; }
+}
+
+.other-page[data-state="close"] {
+  transform: rotate(0deg);
+  animation: other-page__hidden-page 0.6s ease 0.4s forwards;
+  &::before {
+    transform: rotate(0deg);
+    animation: other-page__hidden-page 0.6s ease 0.2s forwards;
+  }
+  .page {
+    transform: rotate(0deg);
+    animation: other-page__hidden-page 0.6s ease 0s forwards;
+  }
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px; right: 10px;
+  width: 100px; height: 100px;
+  cursor: pointer;
+  z-index: 5;
+
+  &::before,
+  &::after {
+    content: ""; display: block;
+    position: absolute;
+    top: calc(50% - 1px); left: 0;
+    width: 100%; height: 2px;
+    background-color: #333;
+  }
+  &::before { transform: rotate(45deg); }
+  &::after  { transform: rotate(-45deg); }
+}
+
+@include pc-layout {
+  .other-page {
+    min-width: $min-width;
+    min-height: $min-height;
+  }
+  .close-btn {
+    width: 100px; height: 100px;
+  }
+}
+
+@include sp-layout {
+  .close-btn {
+    width: 50px; height: 50px;
+  }
+}

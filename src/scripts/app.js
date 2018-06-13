@@ -1,6 +1,10 @@
 import * as util from './lib/util'
 import preload_data from './config/preload'
 
+// event
+util.bindPageLink()
+util.bindCloseBtn()
+
 // preload
 util.preload(preload_data, () => {
   console.log('fin.')
