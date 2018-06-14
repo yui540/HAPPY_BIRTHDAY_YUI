@@ -57,12 +57,14 @@
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
+      transition: all 0.35s ease 0s;
     }
-    .img:nth-child(1) { background-image: url(../images/gallery-page/1.png); }
-    .img:nth-child(2) { background-image: url(../images/gallery-page/2.png); }
-    .img:nth-child(3) { background-image: url(../images/gallery-page/3.png); }
-    .img:nth-child(4) { background-image: url(../images/gallery-page/4.png); }
+    .img:nth-child(1)  { background-image: url(../images/gallery-page/1.png); }
+    .img:nth-child(2)  { background-image: url(../images/gallery-page/2.png); }
+    .img:nth-child(3)  { background-image: url(../images/gallery-page/3.png); }
+    .img:nth-child(4)  { background-image: url(../images/gallery-page/4.png); }
     .img:nth-child(2n) { margin-right: 0; }
+    .img:hover         { transform: scale(1.1); }
 
     &::after { content: ""; display: block; clear: both; }
   }
