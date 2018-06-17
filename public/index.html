@@ -27,6 +27,7 @@
     <meta name="twitter:description" content="由比ヶ浜結衣生誕2018の非公式サイトです。" />
     <meta name="twitter:image" content="https://yui.magical-girl.site/images/ogp.png" />
     <meta name="theme-color" content="#B56E96">
+    <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="https://yui.magical-girl.site/images/icons/icon.png" />
     <link rel="apple-touch-icon" href="https://yui.magical-girl.site/images/icons/icon.png" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
@@ -40,6 +41,11 @@
       gtag('js', new Date());
 
       gtag('config', 'UA-53682384-9');
+    </script>
+    <script>
+      if('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./sw.js').then(() => {})
+      }
     </script>
   </head>
   <body>

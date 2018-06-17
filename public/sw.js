@@ -1,4 +1,10 @@
-export default [
+const CACHE_NAME = 'yui.magical-girl.site_version1.0.0'
+const urlsToCache = [
+  "/",
+  "/stylesheets/font.css",
+  "/stylesheets/style.css",
+  "/scripts/app.min.js",
+  "https://use.fontawesome.com/releases/v5.0.10/css/all.css",
   "./images/load-view/bg.svg",
   "./images/load-view/char-name.svg",
   "./images/load-view/content-name.svg",
@@ -40,3 +46,24 @@ export default [
   "./images/top-page/nav/3.png",
   "./images/top-page/yui.svg",
 ]
+
+self.addEventListener('install', e => {
+  e.waitUntil(
+    caches.open(CACHE_NAME)
+      .then(cache => {
+        return cache.addAll(urlsToCache)
+      })
+  )
+})
+
+self.addEventListener('activate', e => {})
+
+self.addEventListener('fetch', e => {
+  e.respondWith(
+    caches.match(e.request)
+      .then(res => {
+        if(res) return res
+        return fetch(e.request)
+      })
+  )
+})
